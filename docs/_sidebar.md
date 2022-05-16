@@ -5,5 +5,6 @@
 - Creational Patterns
 
   - [Factory Pattern](creational/factory.md)
+  - [Builder Pattern](creational/builder.md)
 
 

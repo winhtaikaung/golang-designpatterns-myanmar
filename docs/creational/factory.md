@@ -1,6 +1,113 @@
 # Factory Pattern
 
-- ဒီ Factory Pattern ကတော့ Struct တွေ Create လုပ်တဲ့ pattern တွေထဲက တခုအပါအဝင်ဖြစ်ပါတယ်။ Factory လို့နာမည်ပေးရတာကတော့ သူက စက်ရုံတခုလိုပဲ ကျနော်တို့ လိုအပ်တဲ့ ဟာကို သူ့ဟာသူ ဆောက်ပေးသွားပါတယ်။
+ Factory Pattern ကတော့ Struct တွေ Create လုပ်တဲ့ pattern တွေထဲက တခုအပါအဝင်ဖြစ်ပါတယ်။ Factory လို့နာမည်ပေးရတာကတော့ သူက စက်ရုံတခုလိုပဲ ကျနော်တို့ လိုအပ်တဲ့ ဟာကို သူ့ဟာသူ ဆောက်ပေးသွားပါတယ်။
+
+# Code Structure
+
+### **iGun.go**
+
+```go
+package factory
+
+type iGun interface {
+	setName(name string)
+	setPower(power int)
+	GetName() string
+	GetPower() int
+}
+
+```
+---
+### **gun.go**
+
+```go
+package factory
+
+type gun struct {
+	name  string
+	power int
+}
+
+func (g *gun) setName(name string) {
+	g.name = name
+}
+
+func (g *gun) GetName() string {
+	return g.name
+}
+
+func (g *gun) setPower(power int) {
+	g.power = power
+}
+
+func (g *gun) GetPower() int {
+	return g.power
+}
+
+
+```
+---
+### **ak47.go**
+
+```go
+package factory
+
+type ak47 struct {
+	gun
+}
+
+func newAk47() iGun {
+	return &ak47{
+		gun: gun{
+			name:  "AK47 gun",
+			power: 4,
+		},
+	}
+}
+
+
+```
+---
+### **hmk.go**
+
+```go
+package factory
+
+type hmk struct {
+	gun
+}
+
+func newHmk() iGun {
+	return &hmk{
+		gun: gun{
+			name:  "HMK gun",
+			power: 1,
+		},
+	}
+}
+
+```
+---
+### **factory.go**
+
+```go
+package factory
+
+import "fmt"
+
+func GetGun(gunType string) (iGun, error) {
+	if gunType == "ak47" {
+		return newAk47(), nil
+	}
+	if gunType == "hmk" {
+		return newHmk(), nil
+	}
+	return nil, fmt.Errorf("Wrong gun type passed")
+}
+
+
+```
+
 
 ## ရှင်းလင်းချက်
 
