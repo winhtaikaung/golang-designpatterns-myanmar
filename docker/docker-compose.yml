@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  hellogo:
+    build:
+      context: ./../
+      dockerfile: ./docker/Dockerfile
+    tty: true
+    volumes:
+      - ./../:/go/src/app:cached
+      - ${HOME}/.ssh:/home/vscode/.ssh:cached
+      
+
+
