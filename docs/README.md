@@ -1,6 +1,6 @@
 # Golang Design Patterns in Myanmar
 
-This is a sample project that lets you run container based development with Golang & Vscode. 
+This is a sample project that lets you run container based development with Golang and understand design patterns. 
 
 
 ## Prequesties
