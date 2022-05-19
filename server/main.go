@@ -8,6 +8,7 @@ package main
 import (
 	"app/server/creational/builder"
 	"app/server/creational/factory"
+	"app/server/creational/singleton"
 	"fmt"
 )
 
@@ -29,5 +30,11 @@ func main() {
 	mainChef.SetBuilder(indianChef)
 	curry = mainChef.MakeCurry()
 	fmt.Println(curry.Name)
+
+	// SingleTon Pattern
+
+	for i := 0; i < 100; i++ {
+		singleton.GetSingleTonObject()
+	}
 
 }
